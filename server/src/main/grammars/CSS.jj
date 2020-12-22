@@ -1,0 +1,28 @@
+PARSER_BEGIN(CSS)
+
+/** Simple brace matcher. */
+public class CSS {
+
+  /** Main entry point. */
+  public static void main(String args[]) throws ParseException {
+    CSS parser = new CSS(System.in);
+    parser.Input();
+  }
+
+}
+
+PARSER_END(CSS)
+
+/** Root production. */
+void Input() :
+{}
+{
+  MatchedBraces() ("\n"|"\r")* <EOF>
+}
+
+/** Brace matching production. */
+void MatchedBraces() :
+{}
+{
+  "{" [ MatchedBraces() ] "}"
+}

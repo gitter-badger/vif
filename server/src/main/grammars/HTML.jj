@@ -1,17 +1,17 @@
-PARSER_BEGIN(Example)
+PARSER_BEGIN(HTML)
 
 /** Simple brace matcher. */
-public class Example {
+public class HTML {
 
   /** Main entry point. */
   public static void main(String args[]) throws ParseException {
-    Example parser = new Example(System.in);
+    HTML parser = new HTML(System.in);
     parser.Input();
   }
 
 }
 
-PARSER_END(Example)
+PARSER_END(HTML)
 
 /** Root production. */
 void Input() :
