@@ -4,9 +4,9 @@ compile-all: compile-server
 server-proto: generate-proto-files compile-grpc-with-maven
 
 generate-proto-files:
-	protoc -I=./proto --java_out=./server/src/main/java ./proto/Octal.proto
+	protoc -I=./proto --java_out=./src/main/java ./proto/Octal.proto
 compile-grpc-with-maven:
-	cd ./server && mvn generate-resources && cd ..
+	mvn generate-resources
 
 compile-server:
-	cd ./server && mvn compile && cd ..
+	mvn compile

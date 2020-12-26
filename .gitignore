@@ -1,2 +1,2 @@
-server/src/main/java/io/octal/proto/
-server/target/
+src/main/java/io/octal/proto/
+target/
