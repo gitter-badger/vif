@@ -11,8 +11,8 @@ import io.octal.proto.*;
 /**
  * Server that manages startup/shutdown of a {@code Greeter} server.
  */
-public class OctalServer {
-    private static final Logger logger = Logger.getLogger(OctalServer.class.getName());
+public class Octal {
+    private static final Logger logger = Logger.getLogger(Octal.class.getName());
 
     private Server server;
 
@@ -30,7 +30,7 @@ public class OctalServer {
                 // Use stderr here since the logger may have been reset by its JVM shutdown hook.
                 System.err.println("*** shutting down gRPC server since JVM is shutting down");
                 try {
-                    OctalServer.this.stop();
+                    Octal.this.stop();
                 } catch (InterruptedException e) {
                     e.printStackTrace(System.err);
                 }
@@ -58,7 +58,7 @@ public class OctalServer {
      * Main launches the server from the command line.
      */
     public static void main(String[] args) throws IOException, InterruptedException {
-        final OctalServer server = new OctalServer();
+        final Octal server = new Octal();
         server.start();
         server.blockUntilShutdown();
     }
