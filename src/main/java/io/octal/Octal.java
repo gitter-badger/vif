@@ -3,12 +3,15 @@ package io.octal;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import io.octal.proto.File;
+import io.octal.proto.ProjectFiles;
+
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
-import io.octal.proto.*;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 /**
  * Server that manages startup/shutdown of a {@code Greeter} server.
@@ -66,12 +69,16 @@ public class Octal {
         server.blockUntilShutdown();
     }
 
-    static class OctalImpl extends OctalGrpc.OctalImplBase {
+    static class OctalImpl extends io.octal.proto.OctalGrpc.OctalImplBase {
 
         @Override
-        public void sendFile(ProjectFiles req, StreamObserver<ProjectFiles> responseObserver) {
+        public void sendFile(io.octal.proto.ProjectFiles req, StreamObserver<io.octal.proto.ProjectFiles> responseObserver) {
+            System.out.println("Send file function called");
+            System.out.println("Recieved " + req.getFilesList().size() + " files");
+             List<File> inputFilesList = req.getFilesList();
+
             //TODO: Get files from request and send to appropriate compiler
-            ProjectFiles.Builder fb = ProjectFiles.newBuilder();
+            io.octal.proto.ProjectFiles.Builder fb = io.octal.proto.ProjectFiles.newBuilder();
             fb.addAllFiles(new ArrayList<File>());
             fb.setEpoch(Instant.now().toEpochMilli());
             ProjectFiles reply = fb.build();
