@@ -21,6 +21,7 @@ public class Octal {
         int port = 50051;
         server = ServerBuilder.forPort(port)
                 .addService(new OctalImpl())
+                .maxInboundMessageSize(1000000000)
                 .build()
                 .start();
         logger.info("Server started, listening on " + port);
