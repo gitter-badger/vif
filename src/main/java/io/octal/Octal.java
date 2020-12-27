@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import io.octal.proto.*;
+import java.time.Instant;
+import java.util.ArrayList;
 
 /**
  * Server that manages startup/shutdown of a {@code Greeter} server.
@@ -69,8 +71,11 @@ public class Octal {
         @Override
         public void sendFile(ProjectFiles req, StreamObserver<ProjectFiles> responseObserver) {
             //TODO: Get files from request and send to appropriate compiler
-            //ProjectFiles reply = ProjectFiles.newBuilder().setMessage("Hello " + req.getName()).build();
-            //responseObserver.onNext(reply);
+            ProjectFiles.Builder fb = ProjectFiles.newBuilder();
+            fb.addAllFiles(new ArrayList<File>());
+            fb.setEpoch(Instant.now().toEpochMilli());
+            ProjectFiles reply = fb.build();
+            responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
     }
