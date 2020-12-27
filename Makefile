@@ -5,7 +5,7 @@ server-proto: generate-proto-files compile-grpc-with-maven
 assembly:
 	mvn package
 generate-proto-files:
-	protoc -I=./proto --java_out=./src/main/java ./proto/Octal.proto
+	protoc -I=${OCTAL_PROTO_PATH} --java_out=./src/main/java ${OCTAL_PROTO_PATH}/Octal.proto
 compile-grpc-with-maven:
 	mvn generate-resources
 
