@@ -5,7 +5,7 @@ server-proto: generate-proto-files compile-grpc-with-maven
 assembly:
 	mvn package
 generate-proto-files:
-	protoc -I=${OCTAL_PROTO_PATH} --java_out=./src/main/java ${OCTAL_PROTO_PATH}/Vif.proto
+	protoc -I=${VIF_PROTO_PATH} --java_out=./src/main/java ${VIF_PROTO_PATH}/Vif.proto
 compile-grpc-with-maven:
 	mvn generate-resources
 
