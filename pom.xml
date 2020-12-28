@@ -2,13 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.octal.server</groupId>
-    <artifactId>octal-server</artifactId>
+    <groupId>io.vif.server</groupId>
+    <artifactId>vif-server</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>octal-server</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <name>vif-server</name>
+    <url>https://vif.io</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -64,7 +63,7 @@
                     <pluginId>grpc-java</pluginId>
                     <clearOutputDirectory>false</clearOutputDirectory>
                     <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.34.1:exe:${os.detected.classifier}</pluginArtifact>
-                    <protoSourceRoot>${OCTAL_PROTO_PATH}</protoSourceRoot>
+                    <protoSourceRoot>${VIF_PROTO_PATH}</protoSourceRoot>
                     <outputDirectory>${basedir}/src/main/java/</outputDirectory>
                 </configuration>
                 <executions>
@@ -82,13 +81,13 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.1</version>
                 <configuration>
-                    <finalName>octal</finalName>
+                    <finalName>vif</finalName>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>io.octal.Octal</mainClass>
+                            <mainClass>io.vif.Vif</mainClass>
                         </manifest>
                     </archive>
                     <appendAssemblyId>false</appendAssemblyId>
